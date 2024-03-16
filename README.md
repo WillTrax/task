@@ -40,7 +40,7 @@
 
 ###
 
-<p align="left">Clone the repository: git clone < https://github.com/WillTrax/task.git ></p>
+<p align="left">Clone the repository: git clone https://github.com/WillTrax/task.git</p>
 
 ###
 
