@@ -5,12 +5,11 @@ import com.demo.tarefas.domain.dto.TaskResponseDTO;
 import com.demo.tarefas.domain.exception.NotFoundException;
 import com.demo.tarefas.domain.model.Task;
 import com.demo.tarefas.domain.model.User;
-import com.demo.tarefas.domain.model.repository.TaskRepository;
+import com.demo.tarefas.repository.TaskRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,7 +43,7 @@ public class TaskService {
     public String store(TaskRequestDTO taskRequestDTO) {
 
         User user = recoveryUserService.getUser();
-        Task task = new Task(taskRequestDTO.title(), taskRequestDTO.description(), LocalDateTime.now(), user);
+        Task task = new Task(taskRequestDTO.title(), taskRequestDTO.description(), user);
 
         taskRepository.save(task);
 
@@ -61,7 +60,6 @@ public class TaskService {
             task.setTitle(taskResponseDTO.title());
             task.setDescription(taskResponseDTO.description());
             task.setStatus(taskResponseDTO.status());
-            task.setUpdatedAt(LocalDateTime.now());
 
             return "Task update success";
         }

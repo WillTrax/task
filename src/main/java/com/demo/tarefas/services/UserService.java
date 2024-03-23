@@ -3,16 +3,14 @@ package com.demo.tarefas.services;
 import com.demo.tarefas.domain.dto.CreateUserDTO;
 import com.demo.tarefas.domain.dto.LoginRequestDTO;
 import com.demo.tarefas.domain.dto.LoginResponseDTO;
-import com.demo.tarefas.domain.model.repository.UserRepository;
 import com.demo.tarefas.domain.model.User;
+import com.demo.tarefas.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 @Service
 public class UserService {
@@ -34,7 +32,7 @@ public class UserService {
     public String store(CreateUserDTO userDTO) {
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(userDTO.password());
-        User newUser = new User(userDTO.name(), userDTO.login(), encryptedPassword, LocalDateTime.now());
+        User newUser = new User(userDTO.name(), userDTO.login(), encryptedPassword);
 
         userRepository.save(newUser);
 

@@ -1,4 +1,4 @@
-package com.demo.tarefas.domain.model.repository;
+package com.demo.tarefas.repository;
 
 import com.demo.tarefas.domain.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;

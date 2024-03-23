@@ -1,6 +1,6 @@
 package com.demo.tarefas.security;
 
-import com.demo.tarefas.domain.model.repository.UserRepository;
+import com.demo.tarefas.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

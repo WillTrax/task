@@ -1,6 +1,6 @@
 package com.demo.tarefas.security;
 
-import com.demo.tarefas.domain.model.repository.UserRepository;
+import com.demo.tarefas.repository.UserRepository;
 import com.demo.tarefas.services.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -32,9 +34,11 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
@@ -42,11 +46,10 @@ public class Task {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public Task(String title, String description,LocalDateTime now, User user) {
+    public Task(String title, String description, User user) {
         this.title = title;
         this.description = description;
         this.status = PENDING;
-        this.createdAt = now;
         this.user = user;
     }
 

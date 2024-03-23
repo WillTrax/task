@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -30,17 +31,17 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Task> task;
 
-    public User(String name, String login, String password,LocalDateTime createdAt) {
+    public User(String name, String login, String password) {
         this.name = name;
         this.login = login;
         this.password = password;
-        this.createdAt = createdAt;
     }
 
     @Override
